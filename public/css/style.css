@@ -1,0 +1,59 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'muli' , sans-serif;
+}
+h1,h2,h3,h4,h5{
+    font-weight: bold;
+  }
+.carousel-item {
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  .carousel-caption {
+    bottom: 200px;
+  }
+  
+  .carousel-caption h1 {
+    
+    font-size: 80px;
+    letter-spacing: 2px;
+    margin-top: 25px;
+  }
+  #gambar{
+    width: 100%;
+    height: auto;
+  }
+  .affix {
+    background-color: #eee;
+    -webkit-transition:padding 0.2s ease-out;
+    -moz-transition:padding 0.2s ease-out;  
+    -o-transition:padding 0.2s ease-out;         
+    transition:padding 0.2s ease-out;
+  }
+  
+  section {
+    height:100%;
+  }
+  .nav-item{
+      font-weight:bold ;
+      color: black;
+  }
+#login .container #login-row #login-column #login-box {
+  margin-top: 30px;
+  max-width: 600px;
+  height: 320px;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}

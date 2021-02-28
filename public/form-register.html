@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+<title>Registrasi</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> 
+<link href="https://fonts.googleapis.com/css?family=Muli:400,600,700,800,900&amp;display=swap" rel="stylesheet">
+<style>
+body {
+	color: #fff;
+	background: #3598dc;
+	font-family: 'Muli', sans-serif;
+}
+.form-control {
+	height: 41px;
+	background: #f2f2f2;
+	box-shadow: none !important;
+	border: none;
+}
+.form-control:focus {
+	background: #e2e2e2;
+}
+.form-control, .btn {        
+	border-radius: 3px;
+}
+.signup-form {
+	width: 400px;
+	margin: 30px auto;
+}
+.signup-form form {
+	color: #999;
+	border-radius: 3px;
+	margin-bottom: 15px;
+	background: #fff;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	padding: 30px;
+}
+.signup-form h2  {
+	color: #333;
+	font-weight: bold;
+	margin-top: 0;
+}
+.signup-form hr  {
+	margin: 0 -30px 20px;
+}    
+.signup-form .form-group {
+	margin-bottom: 20px;
+}
+.signup-form input[type="checkbox"] {
+	margin-top: 3px;
+}
+.signup-form .row div:first-child {
+	padding-right: 10px;
+}
+.signup-form .row div:last-child {
+	padding-left: 10px;
+}
+.signup-form .btn {        
+	font-size: 16px;
+	font-weight: bold;
+	background: #3598dc;
+	border: none;
+	min-width: 140px;
+}
+.signup-form .btn:hover, .signup-form .btn:focus {
+	background: #2389cd !important;
+	outline: none;
+}
+.signup-form a {
+	color: #fff;
+	text-decoration: underline;
+}
+.signup-form a:hover {
+	text-decoration: none;
+}
+.signup-form form a {
+	color: #3598dc;
+	text-decoration: none;
+}	
+.signup-form form a:hover {
+	text-decoration: underline;
+}
+.signup-form .hint-text  {
+	padding-bottom: 15px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="signup-form">
+	<div style="background: rgba(255, 255, 255, 0.7); padding:50px;border-radius:10px;">
+		<h2>Sign Up</h2>
+		<p>Please fill in this form to create an account!</p>
+		<hr>
+        <div class="form-group">
+			<div class="row">
+				<div class="col"><input type="text" id="first"class="form-control" name="first_name" placeholder="First Name" required="required"></div>
+				<div class="col"><input type="text" id="last"class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
+			</div>        	
+        </div>
+        <div class="form-group">
+        	<input type="email"id="email" class="form-control" name="email" placeholder="Email" required="required">
+		</div>
+		<div class="form-group">
+        	<input type="file"id="foto" class="form-control-file" name="images" placeholder="images" required="required">
+        </div>
+		<div class="form-group">
+            <input type="password"id="password" class="form-control" name="password" placeholder="Password" required="required">
+        </div>
+		<div class="form-group">
+            <input type="password"id="confirm" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+        </div>        
+        <div class="form-group">
+			<label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+		</div>
+		<div class="form-group">
+            <button id="register" class="btn btn-primary btn-lg">Sign Up</button>
+        </div>
+	<div class="hint-text">Already have an account? <a href="loginregister.html">Login here</a></div>
+	</div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBuMSfGbs9EAeTV76IGgxRezb5lVx-D52c",
+    authDomain: "minakita-app.firebaseapp.com",
+    databaseURL: "https://minakita-app.firebaseio.com",
+    projectId: "minakita-app",
+    storageBucket: "minakita-app.appspot.com",
+    messagingSenderId: "526377078400",
+    appId: "1:526377078400:web:7d18575b49ad5854daa065"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  var auth = firebase.auth();
+  var fname = document.getElementById('first');
+  var lname = document.getElementById('last');
+  var pass = document.getElementById('password');
+  var regis = document.getElementById('register');
+  var email = document.getElementById('email');
+  var photo = document.getElementById('foto');
+  var confirm = document.getElementById('confirm');
+
+  regis.addEventListener('click', signupbray);
+  function signupbray(){
+    auth.createUserWithEmailAndPassword(email.value, pass.value)
+    .then(function(user){
+   		var uid = user.uid;
+		var foto = photo.files[0];
+   		var postData = {
+      	Firstname: fname.value,
+      	Lastname: lname.value,
+      	email: email.value,
+		photo: photo.files[0].name
+		   };
+		firebase.storage().ref('users_photos/'+postData.photo).put(foto);
+		firebase.database().ref('User/').push(postData);
+		alert("registrasi berhasil");
+    })
+    .catch(function(err){
+      alert("maaf, anda belum lengkap mengisinya");
+    })
+  }
+</script>
+</body>
+</html>
